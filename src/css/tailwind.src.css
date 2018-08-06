@@ -1,0 +1,10 @@
+@tailwind preflight;
+@tailwind utilities;
+@tailwind components;
+
+a, body {
+	color: #34495e;
+}
+
+.orange-text { color: config('colors.orange-base') }
+a.selected { color: white !important }
