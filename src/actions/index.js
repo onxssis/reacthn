@@ -1,7 +1,7 @@
-import { SET_ACTIVE_TYPE, SET_ITEMS, SET_LIST, SET_USER } from "./constants"
-import Api from "../api"
-import { activeIds } from "../selectors"
-import { showLoading, hideLoading } from "react-redux-loading-bar"
+import { SET_ACTIVE_TYPE, SET_ITEMS, SET_LIST, SET_USER } from './constants'
+import Api from '../api'
+import { activeIds } from '../selectors'
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
 
 export const setActiveType = name => ({
   type: SET_ACTIVE_TYPE,
@@ -20,7 +20,6 @@ export const setItems = items => ({
 })
 
 export const setActiveItems = ids => {
-  console.log("setac-ids")
   return dispatch => {
     dispatch(fetchItems(ids))
     return Promise.resolve()
@@ -40,7 +39,7 @@ export const fetchListData = (type, routerProps) => {
         dispatch(setActiveItems(ids))
         dispatch(hideLoading())
       })
-      .catch(e => console.log("6", e))
+      .catch(e => console.log('6', e))
   }
 }
 
@@ -61,12 +60,10 @@ export const fetchItems = ids => {
     })
     if (ids.length) {
       return Api.fetchItems(ids).then(items => {
-        console.log("about-to-set", items)
         dispatch(hideLoading())
         dispatch(setItems(items))
       })
     } else {
-      console.log("no-ids")
       dispatch(hideLoading())
       return Promise.resolve()
     }

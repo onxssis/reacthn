@@ -1,9 +1,9 @@
-import React, { Component } from "react"
-import { connect } from "react-redux"
-import { fetchItems } from "../actions"
-import Spinner from "../components/Spinner"
-import Comment from "./Comment"
-import { getHost } from "../utils/helpers"
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { fetchItems } from '../actions'
+import Spinner from '../components/Spinner'
+import Comment from './Comment'
+import { getHost } from '../utils/helpers'
 
 export class ItemPage extends Component {
   state = {
@@ -11,25 +11,22 @@ export class ItemPage extends Component {
   }
 
   componentWillMount() {
-    console.log("cwm")
     this.props.dispatch(fetchItems([this.props.match.params.id]))
   }
 
   componentDidMount() {
-    console.log("cdm", this.props.item)
     this.fetchComments()
   }
 
   componentDidUpdate(prevProps) {
-    console.log("cdu")
     if (this.props.item !== prevProps.item) this.fetchComments()
   }
 
   fetchComments = () => {
     if (!this.props.item || !this.props.item.kids) {
       return
-	}
-	
+    }
+
     fetchComments(this.props, this.props.item).then(() => {
       this.setState(() => ({ fetching: false }))
     })
@@ -51,9 +48,9 @@ export class ItemPage extends Component {
               </div>
 
               <div className="news-meta my-4">
-                <span>{item.score} points</span> <span> | </span>{" "}
+                <span>{item.score} points</span> <span> | </span>{' '}
                 <span>
-                  by{" "}
+                  by{' '}
                   <span className="underline text-base-color cursor-pointer">
                     {item.by}
                   </span>
@@ -64,8 +61,8 @@ export class ItemPage extends Component {
             <div className="comments bg-white mt-2 mb-6 p-5">
               <p className="flex items-center mb-4">
                 {item && item.descendants
-                  ? item.descendants + " comments"
-                  : "No comments."}
+                  ? item.descendants + ' comments'
+                  : 'No comments.'}
 
                 <span className="ml-4">
                   {this.state.fetching && item.descendants ? <Spinner /> : null}
@@ -74,7 +71,9 @@ export class ItemPage extends Component {
 
               {!this.state.fetching && (
                 <ul className="list-reset">
-                  {item.kids.map(id => <Comment key={id} id={id} />)}
+                  {item.kids.map(id => (
+                    <Comment key={id} id={id} />
+                  ))}
                 </ul>
               )}
             </div>
@@ -101,6 +100,5 @@ const mapStateToProps = (state, ownProps) => ({
   item: state.state.items[ownProps.match.params.id],
   items: state.state.items
 })
-
 
 export default connect(mapStateToProps)(ItemPage)
