@@ -1,6 +1,6 @@
-import { createApi } from "./firebase"
-const HN_BASE_URL = "https://hacker-news.firebaseio.com"
-const HN_VERSION = "/v0"
+import { createApi } from '../firebase'
+const HN_BASE_URL = 'https://hacker-news.firebaseio.com'
+const HN_VERSION = '/v0'
 
 const api = createApi({
   config: {
@@ -18,7 +18,7 @@ export function fetch(child) {
   } else {
     return new Promise((resolve, reject) => {
       api.child(child).once(
-        "value",
+        'value',
         snapshot => {
           const val = snapshot.val()
 
@@ -26,7 +26,6 @@ export function fetch(child) {
           if (val) {
             val.lastUpdated = Date.now()
             cache && cache.set(child, val)
-            console.log(`fetched ${child}. | cached | ${val}`)
             resolve(val)
           } else {
             resolve({})
@@ -71,10 +70,10 @@ const Api = {
       }
     }
 
-    ref.on("value", handler)
+    ref.on('value', handler)
 
     return () => {
-      ref.off("value", handler)
+      ref.off('value', handler)
     }
   }
 }

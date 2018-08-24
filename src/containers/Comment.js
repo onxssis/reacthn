@@ -1,6 +1,6 @@
-import React, { Component } from "react"
-import { connect } from "react-redux"
-import { diffForHumans } from "../utils/helpers"
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { diffForHumans } from '../utils/helpers'
 
 class Comment extends Component {
   state = {
@@ -15,7 +15,9 @@ class Comment extends Component {
     if (comment && comment.kids) {
       return (
         <React.Fragment>
-          {comment.kids.map(id => <Comment id={id} key={id} />)}
+          {comment.kids.map(id => (
+            <Comment id={id} key={id} />
+          ))}
         </React.Fragment>
       )
     }
@@ -37,7 +39,7 @@ class Comment extends Component {
 
             <div
               className="my-3 text-sm"
-              style={{ overflowWrap: "break-word" }}
+              style={{ overflowWrap: 'break-word' }}
               dangerouslySetInnerHTML={{ __html: comment.text }}
             />
 
@@ -67,7 +69,7 @@ class Comment extends Component {
   }
 }
 
-const pluralizeReply = i => i + (i === 1 ? " reply" : " replies")
+const pluralizeReply = i => i + (i === 1 ? ' reply' : ' replies')
 
 const mapStateToProps = (state, ownProps) => ({
   comment: state.state.items[ownProps.id]
