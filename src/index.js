@@ -1,5 +1,4 @@
-import 'core-js'
-import 'core-js'
+import 'babel-polyfill'
 
 import { createBrowserHistory } from 'history'
 import { Provider } from 'react-redux'
