@@ -1,15 +1,18 @@
-import { createBrowserHistory } from "history"
-import { Provider } from "react-redux"
-import React from "react"
-import ReactDOM from "react-dom"
+import 'core-js/es6/map'
+import 'core-js/es6/set'
 
-import "./index.css"
-import "./css/tailwind.css"
+import { createBrowserHistory } from 'history'
+import { Provider } from 'react-redux'
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-import store from "./store"
+import './index.css'
+import './css/tailwind.css'
 
-import App from "./App"
-import registerServiceWorker from "./registerServiceWorker"
+import store from './store'
+
+import App from './App'
+import registerServiceWorker from './registerServiceWorker'
 
 const history = createBrowserHistory()
 
@@ -17,6 +20,6 @@ ReactDOM.render(
   <Provider store={store()}>
     <App history={history} />
   </Provider>,
-  document.getElementById("root")
+  document.getElementById('root')
 )
 registerServiceWorker()
