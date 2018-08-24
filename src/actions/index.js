@@ -62,7 +62,6 @@ export const fetchItems = ids => {
       return Api.fetchItems(ids).then(items => {
         dispatch(hideLoading())
         dispatch(setItems(items))
-        localStorage.setItem('items', JSON.stringify(items))
       })
     } else {
       dispatch(hideLoading())

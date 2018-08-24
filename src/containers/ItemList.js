@@ -28,14 +28,14 @@ class ItemList extends React.PureComponent {
         }
       })
 
-      if (!navigator.onLine) {
-        this.setState((prevState, props) => {
-          return {
-            displayedPage: to,
-            displayedItems: JSON.parse(localStorage.getItem('items'))
-          }
-        })
-      }
+      //   if (!navigator.onLine) {
+      //     this.setState((prevState, props) => {
+      //       return {
+      //         displayedPage: to,
+      //         displayedItems: JSON.parse(localStorage.getItem('items'))
+      //       }
+      //     })
+      //   }
     })
   }
 
