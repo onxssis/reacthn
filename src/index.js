@@ -1,6 +1,4 @@
 import 'core-js'
-import 'core-js'
-
 import { createBrowserHistory } from 'history'
 import { Provider } from 'react-redux'
 import React from 'react'
