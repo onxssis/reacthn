@@ -21,7 +21,7 @@ class ItemList extends React.PureComponent {
         return
       }
 
-      if (!navigator.isOnline) {
+      if (!navigator.onLine) {
         this.setState((prevState, props) => {
           return {
             displayedPage: to,
