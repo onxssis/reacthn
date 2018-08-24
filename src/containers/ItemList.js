@@ -1,11 +1,11 @@
-import React from "react"
-import { connect } from "react-redux"
-import { TransitionGroup, CSSTransition } from "react-transition-group"
-import Api from "../api"
-import { setList, setActiveItems } from "../actions"
-import { activeIds, activeItems } from "../selectors"
-import Paginator from "../components/Paginator"
-import Item from "../components/Item"
+import React from 'react'
+import { connect } from 'react-redux'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import Api from '../api'
+import { setList, setActiveItems } from '../actions'
+import { activeIds, activeItems } from '../selectors'
+import Paginator from '../components/Paginator'
+import Item from '../components/Item'
 
 class ItemList extends React.PureComponent {
   state = {
@@ -19,6 +19,15 @@ class ItemList extends React.PureComponent {
       if (this.state.page < 0 || this.state.page > this.maxPage()) {
         this.props.history.replace(`/${this.props.type}/1`)
         return
+      }
+
+      if (!navigator.isOnline) {
+        this.setState((prevState, props) => {
+          return {
+            displayedPage: to,
+            displayedItems: JSON.parse(localStorage.getItem('items'))
+          }
+        })
       }
 
       this.setState((prevState, props) => {
@@ -104,18 +113,14 @@ class ItemList extends React.PureComponent {
             <div className="news-list">
               <ul className="list-reset">
                 <TransitionGroup>
-				  
-				{this.state.displayedItems.map(item => (
+                  {this.state.displayedItems.map(item => (
                     <CSSTransition
                       classNames="fade"
                       key={item.id}
-					  timeout={500}>
-					  
-					  <Item key={item.id} item={item} />
-					  
+                      timeout={500}>
+                      <Item key={item.id} item={item} />
                     </CSSTransition>
-				))}
-				  
+                  ))}
                 </TransitionGroup>
               </ul>
             </div>
