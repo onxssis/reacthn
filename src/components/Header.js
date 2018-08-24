@@ -8,7 +8,11 @@ const Header = () => {
       <LoadingBar style={{ backgroundColor: '#fcce53' }} />
 
       <nav className="container inner flex items-center py-3 px-4">
-        <NavLink to="/" activeClassName="selected" className="mr-5 text-white">
+        <NavLink
+          to="/"
+          activeClassName="selected"
+          className="mr-5 text-white"
+          aria-label="Logo">
           <i className="fab fa-2x fa-hacker-news" />
         </NavLink>
 
@@ -52,11 +56,15 @@ const Header = () => {
         <a
           href="https://reactjs.org/"
           target="_blank"
+          rel="noreferrer"
+          aria-label="React Js"
           className="hidden md:block mr-3 hover:text-white font-normal text-white no-underline">
           <i className="fab fa-2x fa-react" />
         </a>
         <a
           href="https://github.com/onxssiss/reacthn"
+          aria-label="Github repo"
+          rel="noreferrer"
           target="_blank"
           className="hidden md:block font-normal hover:text-white text-white no-underline">
           <i className="fab fa-2x fa-github" />
