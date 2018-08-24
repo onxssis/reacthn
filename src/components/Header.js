@@ -50,13 +50,13 @@ const Header = () => {
         </div>
 
         <a
-          href="/https://reactjs.org/"
+          href="https://reactjs.org/"
           target="_blank"
           className="hidden md:block mr-3 hover:text-white font-normal text-white no-underline">
           <i className="fab fa-2x fa-react" />
         </a>
         <a
-          href="/https://github.com/onxssiss/reacthn"
+          href="https://github.com/onxssiss/reacthn"
           target="_blank"
           className="hidden md:block font-normal hover:text-white text-white no-underline">
           <i className="fab fa-2x fa-github" />
