@@ -21,6 +21,13 @@ class ItemList extends React.PureComponent {
         return
       }
 
+      this.setState((prevState, props) => {
+        return {
+          displayedPage: to,
+          displayedItems: props.activeItems
+        }
+      })
+
       if (!navigator.onLine) {
         this.setState((prevState, props) => {
           return {
@@ -29,13 +36,6 @@ class ItemList extends React.PureComponent {
           }
         })
       }
-
-      this.setState((prevState, props) => {
-        return {
-          displayedPage: to,
-          displayedItems: props.activeItems
-        }
-      })
     })
   }
 
